@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="container_post">
+        <div class="container_post_header">
+            <div class="container_post_text">
+                <div>
+                    <p>created by: {{post.user}}</p>
+                    <h2>{{post.title}}</h2>
+                    <p>{{ post.description }}</p>
+                </div>
+                <div class="container_post_buttons">
+                    {% if request.user == post.user %}
+                    <a href="{% url 'post:editTopic' post.id %}"><button class="btn">edit</button></a>
+                    <a href="{% url 'post:deletepost' post.id %}"><button class="btn">delete</button></a>
+                    {% endif %}
+                </div>   
+            </div>
+            <div class="image">
+                {% if post.image %}
+                <img class='img-fluid' style="max-height:10em;" src="{{ post.image.url }}" alt = "" />
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="group_chat_section">
+		<div class="chat">
+			<div class="chat_position">
+                {% for dis in discussion %}
+                    {% comment %} {% if request.user == discussion.user %}
+                        <div class="right_side">
+                            <p><strong>{{dis.user}}</strong>: {{dis.description}}</p>
+                        </div>
+                    {% endif %} {% endcomment %}
+                    <div class="">
+                        <p><strong>{{dis.user}}</strong>: {{dis.description}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+		</div>
+        <div class="chat_box">
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ form }}
+                <input class="btn" type="submit" value="send">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

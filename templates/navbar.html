@@ -1,0 +1,30 @@
+<div class="navbar">
+    <div class="navbar-shell">
+        <div class="navbar_header">
+            <h3><a href="">Blog Post</a></h3>
+        </div>
+        <div class="navbar_links">
+            <ul>
+                <li><a href="{% url 'post:home' %}">Home</a></li>
+
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'chat:message' %}">Chat</a></li>
+                {% comment %} <li><a href="{% url 'useraccount:profileview' request.username %}">Profile</a></li>{% endcomment %}
+                {% endif %}
+                
+                <li><a href="/admin">admin</a></li>
+            </ul>
+        </div>
+        <div class="navbar_links_user">
+            <ul>
+                {% if request.user.is_authenticated %}
+                <li class="navbar_auth"><a href="{% url 'useraccount:userlogout' %}">Logout</a></li>
+                <li class="navbar_auth"><a href="{% url 'useraccount:profileview' request.user %}">Profile {{request.user}}</a></li>
+                {% else %}
+                    <li><a href="{% url 'useraccount:userlogin' %}">Sign in</a></li>
+                    <li><a href="{% url 'useraccount:usersignup' %}">Signup</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

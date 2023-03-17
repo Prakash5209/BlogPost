@@ -1,0 +1,284 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+.body_container{
+    padding:10px;
+}
+
+/* post disscussion */
+.container_post{
+  display: flex;  
+  flex-direction: row;
+}
+/* post disscussion end */
+
+
+
+
+
+
+/* navbar  */
+.navbar{
+    background-color: black;
+}
+.navbar-shell{
+    display:flex;
+}
+.navbar_header{
+    padding:20px;
+}
+.navbar_header a{
+    color: rgb(154, 154, 154);
+    font-family:Arial, Helvetica, sans-serif;
+    text-decoration:none;
+}
+
+.navbar_links ul{
+    padding:0px;
+    margin:0px;
+    box-sizing:border-box;
+    display:flex;
+    padding-left: 5rem;
+}
+.navbar_links ul li{
+    list-style:none;
+    padding:20px;
+}
+.navbar_links ul li a{
+    text-decoration:none;
+    color:rgb(154, 154, 154);
+    font-family:Arial, Helvetica, sans-serif;
+    transition:200ms;
+}
+.navbar_links ul li a:hover{
+    color: rgb(206, 206, 206);
+    text-decoration:underline;
+}
+
+
+
+
+.navbar_links_user{
+    padding: 20px 0 20px 60rem;
+}
+.navbar_links_user ul{
+    padding:0px;
+    margin:0px;
+}
+.navbar_links_user ul li{
+    display:inline-block;
+    padding:0 10px;
+    }
+.navbar_links_user ul li a{
+    color:rgb(154, 154, 154);
+    text-decoration:none;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.navbar_links_user a:hover{
+    color: rgb(206, 206, 206);
+    text-decoration:underline;
+    
+}
+
+/* navbar end */
+
+
+
+/* img  */
+.image{
+    margin:10px;
+}
+/* img end */
+
+
+
+/* createpost container */
+.createpost-container{
+    width: 900px;
+    margin:auto;
+    background-color: #ddd;
+}
+.createpost-form-container{
+    display:flex;
+    justify-content: space-around;
+}
+
+.createpost-form{
+    width: 500px;
+    padding:10px;
+    border-radius:5px;
+    margin:5px;
+}
+.createpost-description{
+    width: 500px;
+    padding:10px;
+    border-radius:5px;
+    margin:5px;
+}
+
+
+/* createpost container end */
+
+
+
+
+
+/* home */
+.topic_createpost{
+    width:800px;
+    margin:auto;
+}
+.topic_createpost a button{
+    padding:10px 30px;
+    border-radius: 5px;
+}
+.topic_createpost a button:hover{
+    padding:10px 30px;
+    border-radius: 5px;
+    background-color:rgb(183, 255, 188);
+}
+.topic_createpost a button p{
+    border-radius: 5px;
+    font-size: 1.0rem;
+}
+.topic_list{
+    border: 1px solid rgb(164, 164, 164);
+    border-radius:5px;
+    padding:10px;
+    width:800px;
+    margin:auto;
+    transition:200ms;
+    background-color: rgb(226, 226, 226);
+}
+.topic_list:hover{
+    background-color: #f3f3f3;
+    box-shadow: 0 0 5px 1px rgb(175, 175, 175);
+}
+.topic_list p a{
+    text-decoration:none;
+    padding:0 15px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.topic_list h3 a{
+    text-decoration:none;
+    /* font-family:Arial, Helvetica, sans-serif; */
+}
+
+.topic_list_vote{
+    margin:10px;
+    padding:0 20px;
+}
+.topic_list_vote a{
+    text-decoration:none;
+}
+/* home end */
+
+
+
+/* groupdiscussion header */
+.container{
+    width: 900px;
+    margin:auto
+}
+.container_post{
+    border: 1px solid rgb(155, 155, 155);
+    border-radius:5px;
+    padding:20px;
+    background-color: #e7e7e7;
+}
+.container_post_header{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.container_post_text{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* groupdiscussion header end */
+
+
+
+/* button */
+.btn{
+    margin-top:10px;
+    padding:10px 30px;
+    border: 1px solid #939393;
+    border-radius: 5px;
+    background-color: #ddd;
+    transition: 200ms;
+}
+.btn:hover{
+    background-color:rgb(183, 255, 188);
+}
+/* button end */
+
+
+/* group chat  */
+.group_chat_section{
+    border: 1px solid rgb(155,155,155);
+    border-radius:5px;
+    padding:20px;
+    background-color: #ddd;
+    height: 525px;
+    position:relative;
+}
+.chat{
+    height: 430px;
+    overflow-y:scroll;
+}
+.right_side{
+    background-color:green;
+}
+.chat_box{
+    /* border: 1px solid black; */
+    /* width:200px;
+    height:200px; */
+    position: absolute;
+    bottom: 20px;
+}
+.form-control{
+    padding:10px;
+    border-radius: 5px;
+    width:500px;
+}
+/* group chat end */
+
+/* groupdiscussion end */
+
+
+/* message  */
+
+.message_container{
+    /* border:1px solid black; */
+    border-radius: 5px;
+    width:800px;
+    display: flex;
+    margin:auto;
+    /* justify-content: space-around; */
+    padding:20px;
+    background-color: #ddd;
+}
+.message_container_user{
+    border: 1px solid rgb(151, 151, 151);
+    border-radius:5px;
+    padding:10px;
+    width: 250px;
+}
+.message_container_chat_box{
+    width:520px;
+    border: 1px solid rgb(148, 148, 148);
+    /* height: 400px; */
+    border-radius:5px;
+}
+
+
+/* message end */
+
+.select_user{
+    text-decoration: none;
+}

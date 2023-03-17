@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    {% if user.profile.avatar %}
+    <div>
+        <img class="img-fluid" style="max-height:30em;" src="{{ user.profile.avatar.url }}" alt=""/>
+    </div>
+    {% endif %}
+</div>
+{% if form %}
+<div>
+    <form method="post" action="{% url 'useraccount:profileupdate' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" name="submit" class="btn btn-info"/>
+    </form>
+</div>
+{% else %}
+<div>
+    <div>
+        <p>First name: {{user.first_name}}</p>
+        <p>Last name: {{user.last_name}}</p>
+        <p>Email: {{user.email}}</p>
+    </div>
+    <div>{{form.as_p}}</div>
+</div>
+{% endif %}
+{% endblock content %}

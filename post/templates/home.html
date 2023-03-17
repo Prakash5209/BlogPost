@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="topic">
+    <div class="topic_createpost">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'post:createpost' %}"><button><p>Create Topic</p></button></a>
+        {% endif %}
+    </div>
+    {% for var in variable %}
+    <br>
+    <div class="topic_list">
+        <div>
+            <h3><a class="abc" href="topic/{{var.id}}">&emsp;{{ var.title }}</a></h3><br>
+            <p><a href="topic/{{var.id}}">{{ var.description}}</a></p>
+            <div class="image">
+                {% if var.image %}
+                    <a target="_blank" href="{{var.image.url}}">
+                        <img style="max-height:10em;" src="{{ var.image.url }}" alt="photo">
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="topic_list_vote">
+            <span>
+                <span id="like_count_{{var.id}}">{{var.likes_count}}</span>
+                <a class="like_post" id="{{var.id}}" href="{% url 'post:like_post' var.id %}"><i class="bi bi-star"></i></a>
+            </span>
+            {% comment %} <a class="{{post.id}}" href="{% url 'post:like_post' var.id %}">
+                <i class="bi bi-star"></i>
+            </a> {% endcomment %}
+            Vote
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
+
+
+{% block script %}
+{{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".like_post").click(function(evt){
+            evt.preventDefault();
+            let postid = evt.currentTarget.id;
+            let url = evt.currentTarget.href;
+            $.ajax({
+                'url': url,
+                'method': 'GET',
+                'dataType': 'json',
+                success:function(res){
+                    $("#like_count_" + postid).html(res.likes);
+                },
+                error:function(res){
+                    console.log(res);
+                }
+            })
+        });
+    });
+</script>
+{% endblock script %}
