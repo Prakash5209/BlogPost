@@ -3,18 +3,31 @@ from django.contrib.auth import get_user_model,login,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate
 from django.http import HttpResponseRedirect
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 from useraccount.models import Profile
 from useraccount.forms import SignUpForm,ProfileForm
 
 User = get_user_model()
 
-def usersignup(request):
-    form = SignUpForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('post:home')
-    context = {'form':form}
-    return render(request,'signup.html',context)
+# def usersignup(request):
+#     form = SignUpForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('post:home')
+#     context = {'form':form}
+#     return render(request,'signup.html',context)
+
+class SignupView(CreateView):
+    template_name = 'signup.html'
+    form_class = SignUpForm
+    model = User
+    success_url = reverse_lazy('useraccount:login')
+    
+    def form_valid(self,form):
+        user = form.save()
+        Profile.objects.create(user = user)
+        return super().form_valid(form)
 
 def userlogin(request):
     form = AuthenticationForm(request.POST or None)

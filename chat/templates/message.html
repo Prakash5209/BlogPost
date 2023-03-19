@@ -4,7 +4,6 @@
     <div class="message_container_user">
         <h3>users</h3>
 
-
         {% comment %} {% for user in users%}
             <a class="{% if user.username != username %}Select-User{% endif %}" href="{% url 'chat:message_to_user' user.username %}">{{user.username}}</a><br>
         {% endfor %} {% endcomment %}
@@ -16,18 +15,15 @@
     </div>
     <div class="message_container_conversation">
         <div class="message_container_chat_box">
-
-
+            
+            <h3>conversation with: {{username}}</h3><hr>
             {% for conv in conversation %}
-
 
                 {% if conv.from_user != request.user %}
                     <p><a href="{% url 'useraccount:profileview' conv.from_user %}">{{conv.from_user}}</a>:{{conv.description}}</p>
                 {% else %}
                     <p>{{conv.from_user}}:{{conv.description}}</p>
                 {% endif %}
-
-
 
             {% endfor %}
             <form method="post" action="">
@@ -41,35 +37,3 @@
 {% endblock content %}
 
 
-
-
-
-
-
-{% comment %} 
-{% block content %}
-<div class="message">
-    <div class="message_flex">
-        <div class="user_list">
-            <h3>user list</h3>
-            {% for user in users %}
-                <a href="{% url 'chat:message_to_user' user.username %}">{{user}}</a>
-            {% endfor %}
-        </div>
-        <div class="chat_button">
-            <div class="conversation">conversation
-                {% for conv in conversation %}
-                    <p>{{conv.from_user}}:{{conv.description}}</p>
-                {% endfor %}
-            </div>
-            <div class="conversation_button">form
-                <form method="post" action="">
-                    {% csrf_token %}
-                    {{form}}
-                    <input type="submit" value="submit">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock content %} {% endcomment %}

@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<div>
+<div class="user_profile_view">
     {% if user.profile.avatar %}
-    <div>
-        <img class="img-fluid" style="max-height:30em;" src="{{ user.profile.avatar.url }}" alt=""/>
+    <div class="user_profile_context">
+        <img class="img-fluid" style="height:300px; border-radius:5px;" src="{{ user.profile.avatar.url }}" alt=""/>
+    {% else %}
+        <img class="img-fluid" style="height:300px; border-radius:5px;" src="mediafiles/no_profile.jpg" alt=""/>
+        {% comment %} <img class="img-fluid" style="max-height:30em;" src="{{ user.profile.avatar.url }}" alt=""/> {% endcomment %}
     </div>
     {% endif %}
 </div>
 {% if form %}
-<div>
-    <form method="post" action="{% url 'useraccount:profileupdate' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" name="submit" class="btn btn-info"/>
-    </form>
+<div class="user_profile_view">
+    <div class="user_profile_context">
+        <form method="post" action="{% url 'useraccount:profileupdate' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" name="submit" class="btn btn-info"/>
+        </form>
+    </div>
 </div>
 {% else %}
 <div>
-    <div>
+    <div class="others_profile">
         <p>First name: {{user.first_name}}</p>
         <p>Last name: {{user.last_name}}</p>
         <p>Email: {{user.email}}</p>

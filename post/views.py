@@ -1,10 +1,9 @@
 from django.shortcuts import render,redirect,get_object_or_404,reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import HttpResponseRedirect,JsonResponse
 from post.forms import CreatePostForm,GroupDiscussionForm
 from post.models import CreatePost,GroupDiscussion,Like
-from django.http import HttpResponseRedirect,JsonResponse
-
 
 def home(request):
     variable = CreatePost.objects.all()
@@ -16,8 +15,9 @@ def createpost(request):
     form = CreatePostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         obj = form.save(commit = False)
-        obj.user = request.user
+        obj.user = request.user 
         obj.save()
+        messages.add_message(request,messages.SUCCESS,'Post Created!')
         return HttpResponseRedirect(reverse('post:home'))
         # return redirect('post:home')
     context = {'form':form}
@@ -40,22 +40,25 @@ def selectedTopic(request,pk):
 @login_required
 def editTopic(request,pk):
     post = get_object_or_404(CreatePost,id=pk,user = request.user)
-    form = CreatePostForm(request.POST or None,instance = post)
+    form = CreatePostForm(request.POST or None, request.FILES or None, instance = post)
     if form.is_valid():
         obj = form.save(commit = False)
         obj.user = request.user
         obj.save()
+        messages.add_message(request,messages.SUCCESS,'post updated!')
         return HttpResponseRedirect(reverse('post:selectedTopic', args = (pk,)))
         # return redirect('post:selectedTopic',args=(pk,))
     context = {'form':form}
-    return render(request,'createpost.html',context)    
+    return render(request,'editpost.html',context)    
 
 @login_required
 def delete_post(request,pk):
     obj = get_object_or_404(CreatePost,id = pk,user = request.user)
     if request.method == 'POST':
         obj.delete()
-        return redirect('post:selectedTopic',args=(pk,))
+        messages.add_message(request,messages.INFO,'post deleted!')
+        return HttpResponseRedirect(reverse('post:home'))
+        # return HttpResponseRedirect(reverse('post:selectedTopic',args=(pk,)))
     context = {'obj':obj}
     return render(request,'deletepost.html',context)
 

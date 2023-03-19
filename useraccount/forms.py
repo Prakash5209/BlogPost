@@ -17,4 +17,10 @@ class ProfileForm(forms.ModelForm):
     email = forms.CharField()
     class Meta:
         model = Profile
-        fields = ("first_name","last_name","email","contact","address","avatar","bio")
+        fields = ("first_name","last_name","email","contact","address","avatar","bio",)
+        widgets = {
+            'contact':forms.TextInput(attrs={'class':'form-control'}),
+            'address':forms.TextInput(attrs={'class':'form-control'}),
+            'avatar':forms.TextInput(attrs={'class':'form-control'}),
+            'bio':forms.TextInput(attrs={'class':'form-control'}),
+        }

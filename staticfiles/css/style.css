@@ -213,7 +213,30 @@
     transition: 200ms;
 }
 .btn:hover{
-    background-color:rgb(183, 255, 188);
+    background-color:rgb(66, 196, 94);
+}
+.btn-Cancel{
+    margin-top:10px;
+    padding:10px 30px;
+    border: 1px solid #939393;
+    border-radius: 5px;
+    background-color: #ddd;
+    transition: 200ms;
+}
+.btn-Cancel:hover{
+    background-color:rgb(127, 230, 127)
+}
+.btn-Cancel-red{
+    margin-top:10px;
+    padding:10px 30px;
+    border: 1px solid #939393;
+    border-radius: 5px;
+    background-color: #ddd;
+    transition: 200ms;
+
+}
+.btn-Cancel-red:hover{
+    background-color:rgb(230, 127, 127)
 }
 /* button end */
 
@@ -279,6 +302,97 @@
 
 /* message end */
 
+
+/* chat  */
 .select_user{
     text-decoration: none;
 }
+
+.message_container_chat_box{
+    padding:10px;
+}
+
+/* chat end */
+
+
+/* view profile */
+
+.user_profile_context{
+    width: 565px;
+    border: 1px solid #9b9b9b;
+    background-color: #ddd;
+    border-radius:5px;
+    padding:15px;
+    margin:auto;
+}
+
+.profile_view_bio{
+    width:450px;
+    height:60px;
+    border-radius: 5px;
+    padding:10px;
+    margin:10px;
+}
+
+.others_profile{
+    width: 565px;
+    border: 1px solid #9b9b9b;
+    background-color: #ddd;
+    border-radius:5px;
+    padding:15px;
+    margin:auto;
+    font-family:Arial, Helvetica, sans-serif
+}
+/* view profile ends */
+
+
+/* edit post */
+.edit-container{
+    width:600px;
+    margin:auto;
+    border: 1px solid #858585;
+    border-radius:5px;
+    background-color: #ddd;
+    padding:10px;
+}
+/* edit post end  */
+
+
+/* message  */
+.message-container{
+    width:800px;
+    margin:auto;
+}
+.message-container p{
+    background-color:rgb(99, 185, 99);
+    color:white;
+    border:1px solid rgb(0, 99, 0);
+    border-radius:5px;
+    padding:10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.message-container-groupdiscussion{
+    width:900px;
+    margin:auto;
+}
+.message-container-groupdiscussion p{
+    background-color:rgb(99, 185, 99);
+    color:white;
+    border:1px solid rgb(0, 99, 0);
+    border-radius:5px;
+    padding:10px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+/* message end */
+
+/* delete html */
+.delete-container{
+    background-color: #ddd;
+    border:1px solid #9b9b9b;
+    padding:10px;
+    border-radius:5px;
+    width:800px;
+    margin:auto;
+}
+/* delete html end  */

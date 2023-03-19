@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="topic">
+    <div class="message-container">
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    </div><br>
     <div class="topic_createpost">
         {% if request.user.is_authenticated %}
         <a href="{% url 'post:createpost' %}"><button><p>Create Topic</p></button></a>

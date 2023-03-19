@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
+    <div class="message-container-groupdiscussion">
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
     <div class="container_post">
         <div class="container_post_header">
             <div class="container_post_text">
@@ -32,9 +39,15 @@
                             <p><strong>{{dis.user}}</strong>: {{dis.description}}</p>
                         </div>
                     {% endif %} {% endcomment %}
-                    <div class="">
-                        <p><strong>{{dis.user}}</strong>: {{dis.description}}</p>
+
+                    <div>
+                        {% if dis.user != request.user %}
+                            <p><strong><a href="{% url 'useraccount:profileview' dis.user %}">{{dis.user}}:{{dis.description}}</a></strong></p>
+                        {% else %}
+                            <p><strong>{{dis.user}}:{{dis.description}}</strong></p>
+                        {% endif %}
                     </div>
+
                 {% endfor %}
             </div>
 		</div>
