@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from useraccount.models import Profile
 
 User = get_user_model()
@@ -24,3 +24,6 @@ class ProfileForm(forms.ModelForm):
             'avatar':forms.TextInput(attrs={'class':'form-control'}),
             'bio':forms.TextInput(attrs={'class':'form-control'}),
         }
+        
+class CustomLoginForm(AuthenticationForm):
+    pass
