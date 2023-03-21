@@ -233,10 +233,6 @@
     border-radius: 5px;
     background-color: #ddd;
     transition: 200ms;
-
-}
-.btn-Cancel-red:hover{
-    background-color:rgb(230, 127, 127)
 }
 /* button end */
 
